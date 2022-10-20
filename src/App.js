@@ -20,19 +20,38 @@ const Container = styled.div`
 
 function App() {
   const [pageFlow, setPageFlow] = useState(1);
+  
+  const [dadosHeader, setDadosHeader]= useState({})
+
+  const [dadosPostagem, setDadosPostagem] = useState({})
+
+  
+  
+
+
   return (
     <>
       <GlobalStyle />
       <Container>
         <aside>
-          <Header />
+          <Header
+          dadosHeader={dadosHeader}
+          />
+{/* if ternario */}
           {pageFlow === 1 ? (
-            <FormularioLogin setPageFlow={setPageFlow} />
+            <FormularioLogin 
+            setDadosHeader={setDadosHeader}
+            setPageFlow={setPageFlow} 
+            />
           ) : (
-            <FormularioPostagem />
+            <FormularioPostagem 
+            setDadosPostagem={setDadosPostagem}
+            />
           )}
         </aside>
-        <TelaDaPostagem />
+        <TelaDaPostagem 
+        dadosPostagem= {dadosPostagem}
+        />
       </Container>
     </>
   );
